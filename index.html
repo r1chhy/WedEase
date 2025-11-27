@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WedEase</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide icons (for modern, clear icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Playfair+Display:wght=700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Tailwind Configuration */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-berry': '#95347b', /* New Primary Accent Color */
+                        'accent-berry': '#B14B92', /* Lighter Berry for elements/hover */
+                        'light-pink-bg': '#FFF1F9', /* New Light Pink Background */
+                        'text-dark': '#333333',
+                        'text-light': '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px -5px rgba(149, 52, 123, 0.1)',
+                    }
+                }
+            }
+        }
+
+        /* Custom Styles for Aesthetic */
+        body {
+            background-color: #FFF1F9; 
+            font-family: 'Inter', sans-serif;
+            color: #333333;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Text Style */
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            color: #95347b; 
+            font-size: 3.5rem;
+            line-height: 1.1;
+        }
+
+        /* Nav Link Active/Hover Style */
+        .nav-link:hover {
+            color: #95347b; 
+        }
+
+        /* Button Style */
+        .primary-btn {
+            background-color: #95347b; 
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .primary-btn:hover {
+            background-color: #B14B92; 
+            box-shadow: 0 4px 15px rgba(149, 52, 123, 0.3);
+        }
+
+        
+        .section-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1.5rem;
+            background-color: #F8F4F9; 
+            color: #95347b; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .section-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(149, 52, 123, 0.2);
+        }
+
+        /* Budget Planner Styles */
+        .budget-input-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+    </style>
+</head>
+
+<body class="bg-light-pink-bg min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold hero-title">WedEase</a>
+            <div class="hidden md:flex space-x-8 text-text-dark font-medium">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#budget" class="nav-link">Budget</a>
+                <a href="#theme" class="nav-link">Theme</a>
+                <a href="#guest" class="nav-link">Guests</a>
+                <a href="#gifts" class="nav-link">Gifts</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-text-dark font-medium nav-link">Log In</a>
+                <div class="text-primary-berry p-2 rounded-full bg-light-pink-bg">
+                    <i data-lucide="user"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- 1. Hero Section (Home) -->
+        <section id="home" class="py-16 md:py-24 flex flex-col md:flex-row items-center justify-between min-h-[70vh]">
+            <div class="md:w-1/2 space-y-6 order-2 md:order-1 mt-10 md:mt-0">
+                <h1 class="hero-title">WedEase</h1>
+                <p class="text-lg text-text-dark max-w-lg">All the tools you need to enjoy the process of planning your big day—free from overwhelm and stretched thin.</p>
+                <button class="primary-btn flex items-center space-x-2">
+                    <i data-lucide="heart" class="w-5 h-5"></i>
+                    <span>Get started now</span>
+                </button>
+            </div>
+            <!-- place holder for img -->
+            <div class="md:w-1/2 flex justify-center order-1 md:order-2">
+                <div class="w-full max-w-md h-auto bg-white p-6 rounded-3xl shadow-soft">
+                    <p class="text-center text-gray-500 italic">
+                        
+                        <i data-lucide="hand-heart" class="w-20 h-20 text-accent-berry mx-auto block mt-4"></i>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Budget Section (Every Dollar Perfectly Placed) -->
+        <section id="budget" class="py-20">
+            <h2 class="text-3xl md:text-4xl font-display text-center mb-16 text-primary-berry font-extrabold">Every Dollar, Perfectly Placed</h2>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Budget Planner Tool -->
+                <div class="lg:w-7/12 p-8 bg-white rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-semibold mb-6 text-accent-berry">Wedding Budget Tracker</h3>
+                    <p class="mb-4 text-gray-600">Add your estimated costs and watch your total update in real-time. Plan like a pro!</p>
+
+                    <!-- Budget Input Form -->
+                    <div id="budget-items-container" class="space-y-4 max-h-96 overflow-y-auto pr-2">
+                        <!-- Default item templates will be here -->
+                        <div class="budget-item-row flex gap-4 items-center">
+                            <input type="text" placeholder="e.g., Makeup Artist" value="Makeup Artist" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-primary-berry focus:border-primary-berry transition duration-150">
+                            <div class="relative flex items-center">
+                                <span class="absolute left-3 text-gray-500 font-semibold">$</span>
+                                <input type="number" value="7000" min="0" data-cost-input class="w-32 pl-7 pr-3 py-3 border border-gray-300 rounded-lg text-right focus:ring-primary-berry focus:border-primary-berry appearance-none transition duration-150">
+                            </div>
+                            <button onclick="removeBudgetItem(this)" class="p-2 text-gray-400 hover:text-red-500 transition duration-150" aria-label="Remove item">
+                                <i data-lucide="trash-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                         <div class="budget-item-row flex gap-4 items-center">
+                            <input type="text" placeholder="e.g., Venue Rental" value="Venue Rental" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-primary-berry focus:border-primary-berry transition duration-150">
+                            <div class="relative flex items-center">
+                                <span class="absolute left-3 text-gray-500 font-semibold">$</span>
+                                <input type="number" value="15000" min="0" data-cost-input class="w-32 pl-7 pr-3 py-3 border border-gray-300 rounded-lg text-right focus:ring-primary-berry focus:border-primary-berry appearance-none transition duration-150">
+                            </div>
+                            <button onclick="removeBudgetItem(this)" class="p-2 text-gray-400 hover:text-red-500 transition duration-150" aria-label="Remove item">
+                                <i data-lucide="trash-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button onclick="addBudgetItem()" class="mt-6 primary-btn bg-accent-berry hover:bg-primary-berry text-sm">
+                        <i data-lucide="plus" class="w-4 h-4 mr-1 inline-block"></i> Add Budget Item
+                    </button>
+
+                    <!-- Total Display -->
+                    <div class="mt-8 pt-4 border-t-2 border-primary-berry/30 flex justify-between items-center">
+                        <span class="text-xl font-bold text-primary-berry">Estimated Total Budget:</span>
+                        <span id="budget-total" class="text-3xl font-extrabold text-red-600">$22,000</span>
+                    </div>
+                </div>
+
+                <!-- Budget Categories Visuals (Matching the image) -->
+                <div class="lg:w-5/12 grid grid-cols-3 gap-6 place-content-start">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="section-icon"><i data-lucide="book-open" class="w-6 h-6"></i></div>
+                        <span class="mt-2 text-sm font-medium">Venue & Rental</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="section-icon"><i data-lucide="cake" class="w-6 h-6"></i></div>
+                        <span class="mt-2 text-sm font-medium">Food & Drink</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="section-icon"><i data-lucide="music" class="w-6 h-6"></i></div>
+                        <span class="mt-2 text-sm font-medium">Entertainment</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="section-icon"><i data-lucide="camera" class="w-6 h-6"></i></div>
+                        <span class="mt-2 text-sm font-medium">Photography</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="section-icon"><i data-lucide="flower" class="w-6 h-6"></i></div>
+                        <span class="mt-2 text-sm font-medium">Floral & Decor</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <div class="section-icon"><i data-lucide="gift" class="w-6 h-6"></i></div>
+                        <span class="mt-2 text-sm font-medium">Gifts & Favors</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Theme Section -->
+        <section id="theme" class="py-20">
+            <h2 class="text-3xl md:text-4xl font-display text-center mb-16 text-primary-berry font-extrabold">Pick the Theme, Create the Dream.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Theme Card 1: Fairytale -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+                    <img src="https://placehold.co/600x400/F5D6E0/95347b?text=Fairytale+Theme" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F5D6E0/95347b?text=Fairytale+Theme'" alt="Fairytale Theme" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-lg text-primary-berry">Fairytale</h3>
+                        <p class="text-sm text-gray-500 mt-1">Gowns, castles, and magic.</p>
+                    </div>
+                </div>
+                <!-- Theme Card 2: Modern -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+                    <img src="https://placehold.co/600x400/F5D6E0/95347b?text=Modern+Theme" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F5D6E0/95347b?text=Modern+Theme'" alt="Modern Theme" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-lg text-primary-berry">Modern</h3>
+                        <p class="text-sm text-gray-500 mt-1">Sleek lines and minimalist chic.</p>
+                    </div>
+                </div>
+                <!-- Theme Card 3: Rustic -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+                    <img src="https://placehold.co/600x400/F5D6E0/95347b?text=Rustic+Theme" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F5D6E0/95347b?text=Rustic+Theme'" alt="Rustic Theme" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-lg text-primary-berry">Rustic</h3>
+                        <p class="text-sm text-gray-500 mt-1">Barns, wood, and warm lights.</p>
+                    </div>
+                </div>
+                <!-- Theme Card 4: Bohemian -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+                    <img src="https://placehold.co/600x400/F5D6E0/95347b?text=Bohemian+Theme" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F5D6E0/95347b?text=Bohemian+Theme'" alt="Bohemian Theme" class="w-full h-48 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-lg text-primary-berry">Bohemian</h3>
+                        <p class="text-sm text-gray-500 mt-1">Free-spirited, natural, and artistic.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Guests Section -->
+        <section id="guest" class="py-20 flex flex-col md:flex-row items-center justify-between gap-12">
+             <!-- Placeholder for Dinner Table Drawing -->
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-full max-w-md h-auto bg-white p-6 rounded-3xl shadow-soft">
+                    <p class="text-center text-gray-500 italic">
+                        [Image of dinner table placeholder]
+                        <i data-lucide="party-popper" class="w-20 h-20 text-accent-berry mx-auto block mt-4"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="md:w-1/2 space-y-4">
+                <h2 class="text-3xl md:text-4xl font-display text-primary-berry font-extrabold">Every Guest in the Perfect Place</h2>
+                <p class="text-lg text-text-dark">Easily allocate your guests to tables, create dynamic seating charts, and track dietary requirements. Ensure a smooth and enjoyable experience for everyone.</p>
+                <button class="primary-btn bg-accent-berry hover:bg-primary-berry text-sm">
+                    Plan Seating <i data-lucide="arrow-right" class="w-4 h-4 ml-1 inline-block"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- 5. Details Sharing Section -->
+        <section id="details" class="py-20">
+            <h3 class="text-3xl md:text-4xl font-display text-center mb-16 text-primary-berry font-extrabold">Sharing your wedding details with your guests is easy.</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 bg-white rounded-xl shadow-lg">
+                    <div class="section-icon mx-auto mb-4 bg-accent-berry/10"><i data-lucide="calendar-check" class="w-8 h-8 text-accent-berry"></i></div>
+                    <p class="font-semibold text-text-dark">Create your free wedding website in minutes.</p>
+                    <p class="text-sm text-gray-500 mt-1">Guests can RSVP, view venue maps, and get event details.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg">
+                    <div class="section-icon mx-auto mb-4 bg-accent-berry/10"><i data-lucide="mail-check" class="w-8 h-8 text-accent-berry"></i></div>
+                    <p class="font-semibold text-text-dark">Track your RSVPs with instant updates.</p>
+                    <p class="text-sm text-gray-500 mt-1">No more spreadsheets, just smart, real-time data.</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-lg">
+                    <div class="section-icon mx-auto mb-4 bg-accent-berry/10"><i data-lucide="map" class="w-8 h-8 text-accent-berry"></i></div>
+                    <p class="font-semibold text-text-dark">Share everything: info, schedule, and addresses.</p>
+                    <p class="text-sm text-gray-500 mt-1">Keep everyone informed with a single, beautiful link.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Gifts Section -->
+        <section id="gifts" class="py-20 flex flex-col md:flex-row-reverse items-center justify-between gap-12">
+            <!-- Placeholder for Gift/Letter Drawing -->
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-full max-w-md h-auto bg-white p-6 rounded-3xl shadow-soft">
+                    <p class="text-center text-gray-500 italic">
+                        
+                        <i data-lucide="gift" class="w-20 h-20 text-accent-berry mx-auto block mt-4"></i>
+                    </p>
+                </div>
+            </div>
+            <div class="md:w-1/2 space-y-6">
+                <h2 class="text-3xl md:text-4xl font-display text-primary-berry font-extrabold">Track Every Gift, Honor Every Guest</h2>
+                <ul class="space-y-3 text-lg text-text-dark">
+                    <li class="flex items-center space-x-3"><i data-lucide="check-circle" class="w-5 h-5 text-accent-berry flex-shrink-0"></i> <span>Track gifts sent and received.</span></li>
+                    <li class="flex items-center space-x-3"><i data-lucide="check-circle" class="w-5 h-5 text-accent-berry flex-shrink-0"></i> <span>Keep track of thank you notes.</span></li>
+                    <li class="flex items-center space-x-3"><i data-lucide="check-circle" class="w-5 h-5 text-accent-berry flex-shrink-0"></i> <span>Automatically link gifts to guests.</span></li>
+                    <li class="flex items-center space-x-3"><i data-lucide="check-circle" class="w-5 h-5 text-accent-berry flex-shrink-0"></i> <span>Export important data in CSV/PDF.</span></li>
+                </ul>
+                <button class="primary-btn">
+                    Start Tracking <i data-lucide="arrow-right" class="w-4 h-4 ml-1 inline-block"></i>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-berry text-text-light mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-2 md:grid-cols-5 gap-8">
+            <!-- Branding & Newsletter -->
+            <div>
+                <a href="#" class="text-2xl font-bold hero-title text-white block mb-4">WedEase</a>
+                <p class="text-sm mb-4 opacity-80">Plan your dream wedding easily.</p>
+                <form>
+                    <label for="email" class="text-sm block mb-2 font-medium">Join our newsletter</label>
+                    <div class="flex">
+                        <input type="email" id="email" placeholder="Your email" class="p-2 rounded-l-lg text-text-dark focus:outline-none focus:ring-2 focus:ring-accent-berry w-full">
+                        <button type="submit" class="bg-accent-berry p-2 rounded-r-lg hover:bg-white hover:text-primary-berry transition">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- Links 1 -->
+            <div class="col-span-1">
+                <h4 class="font-semibold text-lg mb-4">Features</h4>
+                <ul class="space-y-2 text-sm opacity-80">
+                    <li><a href="#budget" class="hover:underline">Budget Planner</a></li>
+                    <li><a href="#theme" class="hover:underline">Theme Selection</a></li>
+                    <li><a href="#guest" class="hover:underline">Guest List</a></li>
+                    <li><a href="#gifts" class="hover:underline">Gift Tracking</a></li>
+                </ul>
+            </div>
+            <!-- Links 2 -->
+            <div class="col-span-1">
+                <h4 class="font-semibold text-lg mb-4">Company</h4>
+                <ul class="space-y-2 text-sm opacity-80">
+                    <li><a href="#" class="hover:underline">About Us</a></li>
+                    <li><a href="#" class="hover:underline">Careers</a></li>
+                    <li><a href="#" class="hover:underline">Press</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Links 3 -->
+            <div class="col-span-1">
+                <h4 class="font-semibold text-lg mb-4">Support</h4>
+                <ul class="space-y-2 text-sm opacity-80">
+                    <li><a href="#" class="hover:underline">FAQ</a></li>
+                    <li><a href="#" class="hover:underline">Terms of Service</a></li>
+                    <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:underline">Help Center</a></li>
+                </ul>
+            </div>
+            <!-- Social -->
+             <div class="col-span-1">
+                <h4 class="font-semibold text-lg mb-4">Follow Us</h4>
+                <div class="flex space-x-3">
+                    <a href="#" aria-label="Instagram" class="hover:text-accent-berry transition"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                    <a href="#" aria-label="Facebook" class="hover:text-accent-berry transition"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                    <a href="#" aria-label="Twitter" class="hover:text-accent-berry transition"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-white/20 text-center text-xs opacity-70">
+            &copy; 2024 WedEase. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // 1. Budget Planner Logic (Every dollar perfectly placed)
+
+        const budgetItemsContainer = document.getElementById('budget-items-container');
+        const budgetTotalDisplay = document.getElementById('budget-total');
+
+        // Function to format number as currency
+        const formatCurrency = (amount) => {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        };
+
+        // Function to calculate and update the total budget
+        const updateBudgetTotal = () => {
+            let total = 0;
+            const costInputs = budgetItemsContainer.querySelectorAll('[data-cost-input]');
+            
+            costInputs.forEach(input => {
+                const cost = parseFloat(input.value) || 0;
+                total += cost;
+            });
+
+            budgetTotalDisplay.textContent = formatCurrency(total);
+        };
+
+        // Function to create a new budget item element
+        const createBudgetItemElement = (name = '', cost = '') => {
+            const itemRow = document.createElement('div');
+            itemRow.className = 'budget-item-row flex gap-4 items-center';
+            itemRow.innerHTML = `
+                <input type="text" placeholder="e.g., Flowers" value="${name}" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-primary-berry focus:border-primary-berry transition duration-150">
+                <div class="relative flex items-center">
+                    <span class="absolute left-3 text-gray-500 font-semibold">$</span>
+                    <input type="number" value="${cost}" min="0" data-cost-input class="w-32 pl-7 pr-3 py-3 border border-gray-300 rounded-lg text-right focus:ring-primary-berry focus:border-primary-berry appearance-none transition duration-150">
+                </div>
+                <button onclick="removeBudgetItem(this)" class="p-2 text-gray-400 hover:text-red-500 transition duration-150" aria-label="Remove item">
+                    <i data-lucide="trash-2" class="w-5 h-5"></i>
+                </button>
+            `;
+
+            // Re-initialize lucide icons for the new element
+            lucide.createIcons({ parent: itemRow });
+
+            // Attach event listener to the new input
+            const newInput = itemRow.querySelector('[data-cost-input]');
+            newInput.addEventListener('input', updateBudgetTotal);
+            
+            return itemRow;
+        };
+
+        // Public function to add a new budget item (called by button)
+        window.addBudgetItem = () => {
+            const newItem = createBudgetItemElement();
+            budgetItemsContainer.appendChild(newItem);
+            updateBudgetTotal(); // Update total after adding
+        };
+
+        // Public function to remove a budget item (called by button)
+        window.removeBudgetItem = (buttonElement) => {
+            const itemRow = buttonElement.closest('.budget-item-row');
+            if (itemRow) {
+                itemRow.remove();
+                updateBudgetTotal(); // Update total after removing
+            }
+        };
+
+        // Attach event listeners to initial cost inputs on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialInputs = budgetItemsContainer.querySelectorAll('[data-cost-input]');
+            initialInputs.forEach(input => {
+                input.addEventListener('input', updateBudgetTotal);
+            });
+            // Calculate initial total
+            updateBudgetTotal();
+        });
+
+        // 2. Simple Scroll Navigation (SPA simulation)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href').substring(1);
+                if (targetId) {
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
